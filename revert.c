@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:14:33 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/04 21:42:03 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:50:16 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	revert(t_list **stack)
 			tmp = tmp->next;
 		tmp->next = *stack;
 		*stack = (*stack)->next;
+		tmp->next->next = 0x0;
 	}
 }
 
