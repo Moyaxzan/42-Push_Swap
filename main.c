@@ -6,14 +6,12 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 12:29:56 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:59:38 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "./libft/libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
@@ -48,23 +46,8 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 5);
 		return (-1);
 	}
+	//print_stacks(stack_a, stack_b);
+	sort_three(&stack_a);
 	print_stacks(stack_a, stack_b);
-	/*
-	push(&stack_a, &stack_b);
-	printf("\npb\n");
-	push(&stack_a, &stack_b);
-	printf("pb\n");
-	swap(&stack_a);
-	printf("sa\n");
-	revert(&stack_a);
-	printf("ra\n");
-	push(&stack_b, &stack_a);
-	printf("pa\n");
-	revert(&stack_a);
-	printf("ra\n");
-	push(&stack_b, &stack_a);
-	printf("pa\n");
-	print_stacks(stack_a, stack_b);
-	*/
 	return (0);
 }
