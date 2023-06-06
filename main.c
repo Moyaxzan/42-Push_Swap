@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
+/*   Updated: 2023/06/06 12:29:56 by tsaint-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "./libft/libft.h"
 #include <stdio.h>
@@ -9,21 +21,21 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 	{
 		if (stack_a)
 		{
-			printf("%s", (char *)stack_a->content);
+			printf("%d", *((int *) stack_a->content));
 			stack_a = stack_a->next;
 		}
 		else
 			printf(" ");
 		if (stack_b)
 		{
-			printf("\t%s", (char *)stack_b->content);
+			printf("\t%d", *((int *) stack_b->content));
 			stack_b = stack_b->next;
 		}
 		printf("\n");
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_list	*node;
 	t_list	*stack_a;
@@ -31,17 +43,13 @@ int main(int argc, char **argv)
 	int		i;
 
 	i = 1;
-	stack_a = 0x0;
-	stack_b = 0x0;
-	while (i < argc)
+	if (!init(argc, argv, &stack_a))
 	{
-		node = malloc(sizeof(t_list));
-		node->content = argv[i];
-		node->next = 0x0;
-		ft_lstadd_back(&stack_a, node);
-		i++;
+		write(2, "Error\n", 5);
+		return (-1);
 	}
 	print_stacks(stack_a, stack_b);
+	/*
 	push(&stack_a, &stack_b);
 	printf("\npb\n");
 	push(&stack_a, &stack_b);
@@ -57,5 +65,6 @@ int main(int argc, char **argv)
 	push(&stack_b, &stack_a);
 	printf("pa\n");
 	print_stacks(stack_a, stack_b);
+	*/
 	return (0);
 }
