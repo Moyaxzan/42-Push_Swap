@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 13:18:56 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:10:22 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_isnum(const char *str_num)
 	int	i;
 
 	i = 0;
-	if (str_num[i] == '-')
+	if (str_num[i] == '-' || str_num[i] == '+')
 		i++;
 	while (str_num[i] && ft_isdigit(str_num[i]))
 		i++;
