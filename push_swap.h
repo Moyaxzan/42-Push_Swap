@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:45:47 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 14:53:34 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:16:39 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void	push(t_list **source_s, t_list **target_s);
+void	pa(t_list **stack_a, t_list **stack_b);
+void	pb(t_list **stack_a, t_list **stack_b);
 void	revert(t_list **stack);
 void	rr(t_list **stack_a, t_list **stack_b);
 void	rrevert(t_list **stack);

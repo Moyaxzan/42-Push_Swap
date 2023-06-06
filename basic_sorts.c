@@ -6,12 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:41:19 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 14:46:04 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:16:36 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "./libft/libft.h"
 
 void	sort_three_p2(t_list **stack, int first, int second, int third)
 {
