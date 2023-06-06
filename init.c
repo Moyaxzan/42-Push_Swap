@@ -6,12 +6,17 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 13:03:45 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 13:18:56 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+
+void	free_content(void *content)
+{
+	free(content);
+}
 
 int	ft_isnum(const char *str_num)
 {
@@ -75,9 +80,11 @@ int	init(int argc, char **argv, t_list **stack_a)
 	while (i < argc)
 	{
 		content = malloc(sizeof(int));
-		//TODO if fail : free all
 		if (!content)
+		{
+			ft_lstclear(stack_a, free_content);
 			return (0);
+		}
 		*content = ft_atoi(argv[i]);
 		if (!check_dup(*stack_a, *content))
 			return (0);
