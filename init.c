@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 12:31:48 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/06 13:03:45 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ int	ft_isnum(const char *str_num)
 	if (!str_num[i] && i > 0 && str_num[i - 1] != '-')
 		return (1);
 	return (0);
+}
+
+int	check_dup(t_list *stack, int content)
+{
+	while (stack)
+	{
+		if (*((int *)stack->content) == content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
 int	valid_input(int argc, char **argv)
@@ -47,7 +58,6 @@ int	valid_input(int argc, char **argv)
 			if (len == 11 && ft_strncmp(argv[i], "-2147483648", len) > 0)
 				return (0);
 		}
-		// check doubles
 		i++;
 	}
 	return (1);
@@ -69,6 +79,8 @@ int	init(int argc, char **argv, t_list **stack_a)
 		if (!content)
 			return (0);
 		*content = ft_atoi(argv[i]);
+		if (!check_dup(*stack_a, *content))
+			return (0);
 		new = ft_lstnew(content);
 		ft_lstadd_back(stack_a, new);
 		i++;
