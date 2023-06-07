@@ -6,10 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 14:59:38 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:30:53 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 
@@ -41,13 +42,18 @@ int	main(int argc, char **argv)
 	int		i;
 
 	i = 1;
+	stack_a = 0;
+	stack_b = 0;
 	if (!init(argc, argv, &stack_a))
 	{
 		write(2, "Error\n", 5);
 		return (-1);
 	}
 	//print_stacks(stack_a, stack_b);
-	sort_three(&stack_a);
+	if (ft_lstsize(stack_a) == 5)
+		sort_five(&stack_a, &stack_b);
+	else if (ft_lstsize(stack_a) == 3)
+		sort_three(&stack_a);
 	print_stacks(stack_a, stack_b);
 	return (0);
 }

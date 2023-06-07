@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:45:47 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 15:16:39 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:18:55 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	rrevert(t_list **stack);
 void	rrr(t_list **stack_a, t_list **stack_b);
 void	swap(t_list **stack);
 void	ss(t_list **stack_a, t_list **stack_b);
-int		init(int argc, char **argv, t_list **stack_a);
 void	sort_three(t_list **stack);
+void	sort_five(t_list **stack_a, t_list **stack_b);
+int		init(int argc, char **argv, t_list **stack_a);
+int		max(t_list *stack);
+int		is_sorted(t_list *stack);
 
 #endif
