@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:02:27 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/07 12:33:42 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:18:11 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	is_sorted(t_list *stack)
 
 	if (!stack)
 		return (0);
+	prev = *((int *)stack->content);
+	stack = stack->next;
 	while (stack)
 	{
 		if (*((int *)stack->content) < prev)

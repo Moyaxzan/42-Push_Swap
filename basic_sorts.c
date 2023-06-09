@@ -6,15 +6,13 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:41:19 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/07 16:18:38 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:32:07 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <unistd.h>
 
-void	sort_three_p2(t_list **stack, int first, int second, int third)
+static void	sort_three_p2(t_list **stack, int first, int second, int third)
 {
 	if (first > third)
 	{
@@ -58,13 +56,18 @@ void	sort_three(t_list **stack)
 		sort_three_p2(stack, first, second, third);
 }
 
-void	fix(t_list **stack_a, t_list **stack_b)
+static void	fix2(t_list **stack_a, t_list **stack_b)
 {
-	int	first;
-	int	third;
+	swap(stack_a);
+	write(1, "sa\n", 3);
+	pb(stack_a, stack_b);
+	swap(stack_a);
+	write(1, "sa\n", 3);
+	pa(stack_a, stack_b);
+}
 
-	first = *((int *)(*stack_a)->content);
-	third = *((int *)(*stack_a)->next->next->content);
+static void	fix(t_list **stack_a, t_list **stack_b, int first, int third)
+{
 	if (first == max(*stack_a))
 	{
 		revert(stack_a);
@@ -84,27 +87,29 @@ void	fix(t_list **stack_a, t_list **stack_b)
 		write(1, "rra\nsa\nra\nra\n", 13);
 	}
 	else
-	{
-		swap(stack_a);
-		write(1, "sa\n", 3);
-		pb(stack_a, stack_b);
-		swap(stack_a);
-		write(1, "sa\n", 3);
-		pa(stack_a, stack_b);
-	}
+		fix2(stack_a, stack_b);
 }
 
 void	sort_five(t_list **stack_a, t_list **stack_b)
 {
-	if (!stack_a || !stack_b)
-		return ; //return 0 ?
+	int	first;
+	int	third;
+	int	lst_size;
+
+	lst_size = ft_lstsize(*stack_a);
 	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
+	if (lst_size == 5)
+		pb(stack_a, stack_b);
 	sort_three(stack_a);
 	pa(stack_a, stack_b);
+	first = *((int *)(*stack_a)->content);
+	third = *((int *)(*stack_a)->next->next->content);
 	if (!is_sorted(*stack_a))
-		fix(stack_a, stack_b);
-	pa(stack_a, stack_b);
+		fix(stack_a, stack_b, first, third);
+	if (lst_size == 5)
+		pa(stack_a, stack_b);
+	first = *((int *)(*stack_a)->content);
+	third = *((int *)(*stack_a)->next->next->content);
 	if (!is_sorted(*stack_a))
-		fix(stack_a, stack_b);
+		fix(stack_a, stack_b, first, third);
 }

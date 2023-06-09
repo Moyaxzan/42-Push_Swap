@@ -6,11 +6,10 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/07 16:21:48 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/09 13:48:24 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
 
 void	free_content(void *content)
@@ -36,7 +35,7 @@ int	check_dup(t_list *stack, int content)
 {
 	while (stack)
 	{
-		if (*((int *)(stack->content)) == content)
+		if (*((int *)stack->content) == content)
 			return (0);
 		stack = stack->next;
 	}
