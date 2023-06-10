@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:16:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/05/05 10:08:08 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/09 21:14:01 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@
 
 typedef struct s_list
 {
+	int				cost;
+	int				above_median;
 	void			*content;
+	struct s_list	*target;
 	struct s_list	*next;
 }				t_list;
 
