@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:02:27 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/09 13:18:11 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:47:02 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,20 @@ int	max(t_list *stack)
 		stack = stack->next;
 	}
 	return (max);
+}
+
+int	min(t_list *stack)
+{
+	int	min;
+
+	if (!stack)
+		return (0); //return min int ?
+	min = *((int *) stack->content);
+	while (stack)
+	{
+		if (min > *((int *) stack->content))
+			min = *((int *) stack->content);
+		stack = stack->next;
+	}
+	return (min);
 }

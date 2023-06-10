@@ -6,7 +6,7 @@
 /*   By: taospa <taospa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 22:13:17 by taospa            #+#    #+#             */
-/*   Updated: 2023/06/09 16:33:41 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/10 14:51:01 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ t_list	*ft_lstnew(void *content)
 	node->content = content;
 	node->next = 0x0;
 	node->target = 0x0;
+	node->cost = 0;
+	node->above_median = 0;
 	return (node);
 }

@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/09 13:48:24 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:25:25 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	init(int argc, char **argv, t_list **stack_a)
 	t_list	*new;
 
 	i = 1;
+	*stack_a = 0x0;
 	if (!valid_input(argc, argv))
 		return (0);
 	while (i < argc)

@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/09 13:53:24 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:00:31 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 5);
 		return (-1);
 	}
-	sort(&stack_a, &stack_b);
+	if (!is_sorted(stack_a))
+		sort(&stack_a, &stack_b);
 	print_stacks(stack_a, stack_b);
 	return (0);
 }
