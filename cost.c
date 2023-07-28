@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:16:36 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/10 15:41:10 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/07/27 17:59:11 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	get_cost(t_list *stack, int index)
 {
-	int	cost;
 	int	lst_len;
 
 	lst_len = ft_lstsize(stack);

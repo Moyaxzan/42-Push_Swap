@@ -1,43 +1,36 @@
 NAME = push_swap
-SRCS = 
-		
-SRCS_BONUS = 
-
+SRCS = init.c main.c push.c revert.c rrevert.c swap.c cost.c sort.c \
+       utils.c median.c target.c basic_sorts.c
+# SRCS_BONUS = 
 OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
+# OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-TEST_FLAGS = -g3 -fsanitize=address
-RM = rm -rf
+RM = rm -f
+HEADER_FILES = push_swap.h
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
+Make = make
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar $(ARFLAGS) $(NAME).a $(OBJS)
+$(NAME): $(OBJS) $(HEADER_FILES) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJS): %.o: %.c $(HEADER_FILES)
+	$(CC) $(CFLAGS) -I. -I $(LIBFT_DIR)/includes -c $< -o $@
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar $(ARFLAGS) $(NAME).a $(OBJS) $(OBJS_BONUS)
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(SRCS_BONUS)
-	gcc -nostartfiles -shared -o $(NAME).so $(OBJS) $(OBJS_BONUS)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME).a $(NAME).so
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(NAME)
 
 re: fclean all
 
-test: all bonus
-	cp libft.* ./tests
-	cd tests
-	$(CC) $(CFLAGS) $(TEST_FLAGS) tests/main.c libft.a -o test
-	./test
-
-.PHONY: all, clean, fclean, re, test
+.PHONY: all clean fclean re

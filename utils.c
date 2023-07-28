@@ -6,11 +6,16 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:02:27 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/15 15:14:29 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/06/26 11:42:45 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_content(void *content)
+{
+	free(content);
+}
 
 int	is_sorted(t_list *stack)
 {

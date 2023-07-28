@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:21:29 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/15 16:52:32 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:00:43 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	get_median(t_list *stack)
 		current = current->next;
 		i++;
 	}
+	sort_array(array, length);
 	res = array[length / 2];
 	free(array);
 	return (res);

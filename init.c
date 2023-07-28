@@ -6,16 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/10 15:25:25 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/07/27 18:03:09 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_content(void *content)
-{
-	free(content);
-}
 
 int	ft_isnum(const char *str_num)
 {
