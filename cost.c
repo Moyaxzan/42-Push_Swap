@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:16:36 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/07/27 17:59:11 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:57:48 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ t_list	*get_cheapest_move(t_list *stack_b)
 	int		cheapest_cost;
 	t_list	*cheapest_node;
 
+	if (!stack_b)
+		return (0x0);
 	cheapest_cost = stack_b->cost + stack_b->target->cost;
 	cheapest_node = stack_b;
 	while (stack_b)

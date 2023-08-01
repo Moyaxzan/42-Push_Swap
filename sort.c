@@ -6,72 +6,56 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/15 16:54:09 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/02 01:40:17 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fix_a(t_list **stack_a, int b_top)
+int	min_above_med(t_list *stack_a, int min)
 {
-	while (*((int *)(*stack_a)->content) != min(*stack_a))
-	{
-		if (b_top)
-		{
-			revert(stack_a);
-			write(1, "rra\n", 4);
-		}
-		else
-		{
-			rrevert(stack_a);
-			write(1, "ra\n", 3);
-		}
-	}
+	t_list	*current;
+	
+	current = stack_a;
+	while (current && *((int *)(current->content)) != min)
+		current = current->next;
+	return (current->above_median);
 }
 
-static int	small_actions(t_list **stack_a,
+static void	small_actions(t_list **stack_a,
 		t_list **stack_b, t_list *node_a, t_list *node_b)
 {
-	int	res;
-
-	res = 0;
 	if (node_a != *stack_a && node_a->above_median)
 	{
-		rrevert(stack_a);
-		write(1, "rra\n", 3);
-		res = 1;
+		revert(stack_a);
+		write(1, "ra\n", 3);
 	}
 	else if (node_a != *stack_a)
 	{
-		revert(stack_a);
-		write(1, "ra\n", 4);
+		rrevert(stack_a);
+		write(1, "rra\n", 4);
 	}
 	if (node_b->above_median && node_b != *stack_b)
 	{
-		rrevert(stack_b);
+		revert(stack_b);
 		write(1, "rrb\n", 3);
 	}
 	else if (node_b != *stack_b)
 	{
-		revert(stack_b);
-		write(1, "rb\n", 4);
+		rrevert(stack_b);
+		write(1, "rrb\n", 4);
 	}
-	return (res);
+	return ;
 }
 
-// return 0 if a rreverted and 1 if a reverted
-int	bring_top(t_list **stack_a,
+void	bring_top(t_list **stack_a,
 		t_list **stack_b, t_list *node_a, t_list *node_b)
 {
-	int	res;
-
-	res = 0;
 	while (*stack_a != node_a && *stack_b != node_b)
 	{
 		if (node_a->above_median && node_b->above_median)
 		{
 			rr(stack_a, stack_b);
-			res = 1;
 		}
 		else if (!node_a->above_median && !node_b->above_median)
 			rrr(stack_a, stack_b);
@@ -79,20 +63,42 @@ int	bring_top(t_list **stack_a,
 			break ;
 	}
 	while (*stack_a != node_a || *stack_b != node_b)
-		res = small_actions(stack_a, stack_b, node_a, node_b);
-	return (res);
+		small_actions(stack_a, stack_b, node_a, node_b);
+	return ;
 }
 
 void	sort_huge(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node_to_move;
-	int		b_top;
 
 	init_targets(*stack_a, *stack_b);
+	init_costs(*stack_a, *stack_b);
 	node_to_move = get_cheapest_move(*stack_b);
-	b_top = bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
-	pa(stack_a, stack_b);
-	fix_a(stack_a, b_top);
+	print_stacks(*stack_a, *stack_b);
+	fflush(stdout);
+	write(1, "\n", 1);
+	if (*stack_b)
+	{
+		printf("%d %d to top\n", *((int *) node_to_move->target->content), *((int *) node_to_move->content));
+		bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
+		pa(stack_a, stack_b);
+	}
+	if (!*stack_b)
+	{
+		while (*((int *)(*stack_a)->content) != min(*stack_a))
+		{
+			if (min_above_med(*stack_a, min(*stack_a)))
+			{
+				revert(stack_a);
+				write(1, "ra\n", 3);
+			}
+			else
+			{
+				rrevert(stack_a);
+				write(1, "rra\n", 4);
+			}
+		}
+	}
 }
 
 void	sort(t_list **stack_a, t_list **stack_b)
@@ -113,7 +119,7 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	{
 		push_to_b(stack_a, stack_b);
 		sort_five(stack_a, stack_b);
-		while (!is_sorted(*stack_a) || *stack_b)
+		while (/*!is_sorted(*stack_a) ||*/ *stack_b)
 			sort_huge(stack_a, stack_b);
 	}
 }

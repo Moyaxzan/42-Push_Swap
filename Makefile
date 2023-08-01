@@ -15,13 +15,13 @@ Make = make
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER_FILES) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
+	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
 
 $(OBJS): %.o: %.c $(HEADER_FILES)
-	$(CC) $(CFLAGS) -I. -I $(LIBFT_DIR)/includes -c $< -o $@
+	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) bonus
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean

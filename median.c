@@ -6,36 +6,48 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:21:29 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/07/27 18:00:43 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/01 23:20:25 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_array(int *array, int len)
+void	ft_swap(int *a, int *b)
 {
-	int	j;
-	int	k;
+	int	tmp;
 
-	j = 0;
-	k = 0;
-	while (j < len - 1)
+	tmp = *b;
+	*b = *a;
+	*a = tmp;
+}
+
+void	sort_array(int *array, int size)
+{
+	int	min;
+	int	imin;
+	int	cpt1;
+	int	cpt2;
+
+	cpt1 = 0;
+	while (cpt1 < size)
 	{
-		while (k < len - j - 1)
+		imin = cpt1;
+		min = array[cpt1];
+		cpt2 = cpt1 + 1 ;
+		while (cpt2 < size)
 		{
-			if (array[k] > array[k + 1])
+			if (array[cpt2] < min)
 			{
-				array[k] = array[k + 1] + array[k];
-				array[k + 1] = array[k] - array[k + 1];
-				array[k] = array[k] - array[k + 1];
+				min = array[cpt2];
+				imin = cpt2;
 			}
-			k++;
+			cpt2++;
 		}
-		j++;
+		ft_swap(&array[cpt1], &array[imin]);
+		cpt1++;
 	}
 }
 
-#include <stdio.h>
 int	get_median(t_list *stack)
 {
 	int		length;
@@ -51,13 +63,13 @@ int	get_median(t_list *stack)
 		return (0);
 	i = 0;
 	while (current)
-	{
+ 	{
 		array[i] = *((int *)(current->content));
 		current = current->next;
 		i++;
 	}
 	sort_array(array, length);
-	res = array[length / 2];
+	res = array[length / 2 - 1];
 	free(array);
 	return (res);
 }

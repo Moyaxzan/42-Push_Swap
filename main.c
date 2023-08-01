@@ -6,12 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/26 11:28:23 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:51:05 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
