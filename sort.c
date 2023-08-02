@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 01:40:17 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/02 13:27:15 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	min_above_med(t_list *stack_a, int min)
 	t_list	*current;
 	
 	current = stack_a;
+	init_costs(stack_a);
 	while (current && *((int *)(current->content)) != min)
 		current = current->next;
 	return (current->above_median);
@@ -38,7 +39,7 @@ static void	small_actions(t_list **stack_a,
 	if (node_b->above_median && node_b != *stack_b)
 	{
 		revert(stack_b);
-		write(1, "rrb\n", 3);
+		write(1, "rb\n", 3);
 	}
 	else if (node_b != *stack_b)
 	{
@@ -72,14 +73,9 @@ void	sort_huge(t_list **stack_a, t_list **stack_b)
 	t_list	*node_to_move;
 
 	init_targets(*stack_a, *stack_b);
-	init_costs(*stack_a, *stack_b);
-	node_to_move = get_cheapest_move(*stack_b);
-	print_stacks(*stack_a, *stack_b);
-	fflush(stdout);
-	write(1, "\n", 1);
+	node_to_move = get_cheapest_move(*stack_a, *stack_b);
 	if (*stack_b)
 	{
-		printf("%d %d to top\n", *((int *) node_to_move->target->content), *((int *) node_to_move->content));
 		bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
 		pa(stack_a, stack_b);
 	}
@@ -119,7 +115,7 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	{
 		push_to_b(stack_a, stack_b);
 		sort_five(stack_a, stack_b);
-		while (/*!is_sorted(*stack_a) ||*/ *stack_b)
+		while (*stack_b)
 			sort_huge(stack_a, stack_b);
 	}
 }
