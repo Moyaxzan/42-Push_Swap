@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 13:28:08 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:46:02 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ int	main(int argc, char **argv)
 
 	stack_a = 0x0;
 	stack_b = 0x0;
-	if (!init(argc, argv, &stack_a))
+	if (!init(new_split(argc, argv), &stack_a))
 	{
-		write(2, "Error\n", 5);
+		write(2, "Error\n", 6);
 		return (-1);
 	}
+	print_stacks(stack_a, stack_b);
 	if (!is_sorted(stack_a))
 		sort(&stack_a, &stack_b);
-	//print_stacks(stack_a, stack_b);
+	print_stacks(stack_a, stack_b);
 	return (0);
 }

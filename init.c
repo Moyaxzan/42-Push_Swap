@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/07/27 18:03:09 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/02 17:29:30 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int	check_dup(t_list *stack, int content)
 	return (1);
 }
 
-int	valid_input(int argc, char **argv)
+int	valid_input(char **argv)
 {
 	int		i;
 	size_t	len;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (argv[i])
 	{
 		if (!ft_isnum(argv[i]))
 			return (0);
@@ -62,17 +62,17 @@ int	valid_input(int argc, char **argv)
 	return (1);
 }
 
-int	init(int argc, char **argv, t_list **stack_a)
+int	init(char **argv, t_list **stack_a)
 {
 	int		i;
 	int		*content;
 	t_list	*new;
 
-	i = 1;
+	i = 0;
 	*stack_a = 0x0;
-	if (!valid_input(argc, argv))
+	if (!valid_input(argv))
 		return (0);
-	while (i < argc)
+	while (argv[i])
 	{
 		content = malloc(sizeof(int));
 		if (!content)
@@ -87,5 +87,6 @@ int	init(int argc, char **argv, t_list **stack_a)
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
+	free_split(argv);
 	return (1);
 }

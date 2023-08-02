@@ -1,6 +1,6 @@
 NAME = push_swap
 SRCS = init.c main.c push.c revert.c rrevert.c swap.c cost.c sort.c \
-       utils.c median.c target.c basic_sorts.c
+       utils.c median.c target.c basic_sorts.c new_split.c
 # SRCS_BONUS = 
 OBJS = $(SRCS:.c=.o)
 # OBJS_BONUS = $(SRCS_BONUS:.c=.o)
