@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 12:02:27 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/26 11:42:45 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:17:12 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	max(t_list *stack)
 {
 	int	max;
 
-	if (!stack)
-		return (0); //return min int ?
 	max = *((int *) stack->content);
 	while (stack)
 	{
@@ -55,8 +53,6 @@ int	min(t_list *stack)
 {
 	int	min;
 
-	if (!stack)
-		return (0); //return max int ?
 	min = *((int *) stack->content);
 	while (stack)
 	{

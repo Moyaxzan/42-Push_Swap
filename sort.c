@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 13:27:15 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:13:49 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	min_above_med(t_list *stack_a, int min)
 {
 	t_list	*current;
-	
+
 	current = stack_a;
 	init_costs(stack_a);
 	while (current && *((int *)(current->content)) != min)

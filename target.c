@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:42:13 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 01:18:25 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:14:44 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_list	*get_target(t_list *stack_a, int val)
 	target_val = max(stack_a);
 	while (current_node)
 	{
-		if (*((int *)current_node->content) > val &&
-				*((int *) current_node->content) <= target_val)
+		if (*((int *)current_node->content) > val
+			&& *((int *) current_node->content) <= target_val)
 		{
 			target = current_node;
 			target_val = (*(int *)current_node->content);

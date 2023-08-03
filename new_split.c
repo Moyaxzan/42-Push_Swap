@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:42:51 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 18:01:41 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/03 20:33:27 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,19 @@ char	**new_split(int argc, char **argv)
 	if (!splitted_tab)
 		return (NULL);
 	while (i++ < argc)
+	{
 		while (argv[i] && *(argv[i]))
 		{
 			while (*(argv[i]) && *(argv[i]) == ' ')
 				(argv[i])++;
 			if (*(argv[i]))
-			{
 				splitted_tab[cpt] = fill_word(argv[i], ' ');
-				if (!splitted_tab[cpt++])
-					return (free_split(splitted_tab));
-			}
+			if (*(argv[i]) && !splitted_tab[cpt++])
+				return (free_split(splitted_tab));
 			while (*(argv[i]) && *(argv[i]) != ' ')
 				(argv[i])++;
 		}
+	}
 	splitted_tab[cpt] = NULL;
 	return (splitted_tab);
 }

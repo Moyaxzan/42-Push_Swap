@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:21:29 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/01 23:20:25 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/03 19:13:22 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	get_median(t_list *stack)
 		return (0);
 	i = 0;
 	while (current)
- 	{
+	{
 		array[i] = *((int *)(current->content));
 		current = current->next;
 		i++;
