@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/03 19:13:49 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:08:48 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,13 @@ void	bring_top(t_list **stack_a,
 		if (node_a->above_median && node_b->above_median)
 		{
 			rr(stack_a, stack_b);
+			write(1, "rr\n", 3);
 		}
 		else if (!node_a->above_median && !node_b->above_median)
+		{
 			rrr(stack_a, stack_b);
+			write(1, "rrr\n", 4);
+		}
 		else
 			break ;
 	}
@@ -77,7 +81,7 @@ void	sort_huge(t_list **stack_a, t_list **stack_b)
 	if (*stack_b)
 	{
 		bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 1);
 	}
 	if (!*stack_b)
 	{

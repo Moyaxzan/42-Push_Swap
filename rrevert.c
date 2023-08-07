@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:26:37 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/06/06 14:26:22 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/04 17:36:16 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	rrevert(t_list **stack)
 
 void	rrr(t_list **stack_a, t_list **stack_b)
 {
-	write(1, "rrr\n", 4);
 	rrevert(stack_a);
 	rrevert(stack_b);
 }

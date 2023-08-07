@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:21:29 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/03 19:13:22 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/04 18:52:36 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	push_to_b(t_list **stack_a, t_list **stack_b)
 	while (ft_lstsize(*stack_a) != 5)
 	{
 		while (!full_big(*stack_a, median)
-			&& *((int *)(*stack_a)->content) >= median)
+			&& *((int *)(*stack_a)->content) > median)
 		{
 			revert(stack_a);
 			write(1, "ra\n", 3);
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 	}
 }

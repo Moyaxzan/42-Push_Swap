@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 16:42:51 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/03 20:33:27 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/04 02:39:41 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int	count_words(int argc, char **argv, char separator)
 	int	cpt;
 
 	cpt = 0;
-	while (argc-- - 1)
+	while (--argc)
 	{
 		i = 0;
-		if (ft_strchr(argv[argc], ' '))
+		if (argv[argc] && ft_strchr(argv[argc], ' '))
 		{
 			while (argv[argc][i])
 			{
