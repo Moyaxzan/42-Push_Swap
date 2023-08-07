@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:45:47 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/04 18:07:17 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:24:46 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 # include "./libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 t_list	*get_cheapest_move(t_list *stack_a, t_list *stack_b);
-char	**free_split(char **splitted_tab);
 char	**new_split(int argc, char **argv);
 void	sort(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b, int i_write);
@@ -40,7 +38,8 @@ int		max(t_list *stack);
 int		min(t_list *stack);
 int		is_sorted(t_list *stack);
 int		get_median(t_list *stack);
+int		free_split(char **splitted_tab);
 
-void	print_stacks(t_list *stack_a, t_list *stack_b);
+//void	print_stacks(t_list *stack_a, t_list *stack_b);
 
 #endif

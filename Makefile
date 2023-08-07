@@ -18,7 +18,7 @@ Make = make
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER) $(LIBFT)
-	$(CC) -g -fsanitize=address $(CFLAGS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
+	$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
 
 $(OBJS): %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
@@ -26,7 +26,7 @@ $(OBJS): %.o: %.c $(HEADER)
 bonus: $(CHECKER)
 
 $(CHECKER): $(OBJS_CHECKER) $(HEADER_CHECKER) $(LIBFT)
-	$(CC) -g -fsanitize=address $(CFLAGS) -o $(CHECKER) $(OBJS_CHECKER) -L $(LIBFT_DIR) -lft
+	$(CC) $(CFLAGS) -g -fsanitize=address -o $(CHECKER) $(OBJS_CHECKER) -L $(LIBFT_DIR) -lft
 
 $(OBJS_CHECKER): %.o: %.c $(HEADER_CHECKER)
 	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
@@ -44,4 +44,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

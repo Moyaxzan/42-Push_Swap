@@ -6,12 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:43:37 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/04 18:51:50 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:24:57 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include <stdio.h>
 
 static int	apply_move(char *instruction, t_list **stack_a, t_list **stack_b)
 {
@@ -51,6 +50,8 @@ int	check(t_list **stack_a, t_list **stack_b)
 	{
 		if (!apply_move(instruction, stack_a, stack_b))
 		{
+			ft_lstclear(stack_a, free);
+			ft_lstclear(stack_b, free);
 			free(instruction);
 			write(2, "Error\n", 6);
 			return (-1);
@@ -62,5 +63,6 @@ int	check(t_list **stack_a, t_list **stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	ft_lstclear(stack_a, free);
 	return (0);
 }

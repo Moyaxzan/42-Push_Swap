@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:58:20 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 17:29:30 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:33:55 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,18 @@ int	init(char **argv, t_list **stack_a)
 	i = 0;
 	*stack_a = 0x0;
 	if (!valid_input(argv))
-		return (0);
+		return (free_split(argv));
 	while (argv[i])
 	{
 		content = malloc(sizeof(int));
 		if (!content)
-		{
-			ft_lstclear(stack_a, free_content);
-			return (0);
-		}
+			return (free_split(argv));
 		*content = ft_atoi(argv[i]);
 		if (!check_dup(*stack_a, *content))
-			return (0);
+		{
+			free(content);
+			return (free_split(argv));
+		}
 		new = ft_lstnew(content);
 		ft_lstadd_back(stack_a, new);
 		i++;

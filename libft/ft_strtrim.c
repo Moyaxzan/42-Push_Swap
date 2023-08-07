@@ -6,7 +6,7 @@
 /*   By: taospa <taospa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:34:49 by taospa            #+#    #+#             */
-/*   Updated: 2023/05/05 13:01:21 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:26:05 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len_res = len_res - i;
 	return (fill_trim(s1, len_res, i));
 }
-/*
-int main(void)
-{
-	char	*res = ft_strtrim("    		123456789		  l   ", " \t");
-	printf("res = |%s|\n", res);
-	free(res);
-	return (0);
-}
-*/

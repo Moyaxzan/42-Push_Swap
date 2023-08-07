@@ -6,12 +6,14 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:49:15 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/04 18:14:35 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:34:43 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft/libft.h"
 
+/*
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	while (stack_a || stack_b)
@@ -30,7 +32,8 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 		}
 		printf("\n");
 	}
-}
+}*/
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -40,6 +43,7 @@ int	main(int argc, char **argv)
 	stack_b = 0x0;
 	if (!init(new_split(argc, argv), &stack_a))
 	{
+		ft_lstclear(&stack_a, free_content);
 		write(2, "Error\n", 6);
 		return (-1);
 	}
