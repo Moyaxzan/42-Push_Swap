@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 17:16:36 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/02 13:20:11 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:55:33 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ void	init_costs(t_list *stack)
 	size = ft_lstsize(stack);
 	while (curr_node)
 	{
-		curr_node->cost = get_cost(stack, index++);
+		curr_node->cost = get_cost(stack, index);
 		if (index > size / 2)
 			curr_node->above_median = 0;
 		else
 			curr_node->above_median = 1;
 		curr_node = curr_node->next;
+		++index;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:45:47 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/07 12:24:46 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:54:38 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ int		init(char **argv, t_list **stack_a);
 int		max(t_list *stack);
 int		min(t_list *stack);
 int		is_sorted(t_list *stack);
+int		only_target(t_list *stack_a);
 int		get_median(t_list *stack);
 int		free_split(char **splitted_tab);
 
-//void	print_stacks(t_list *stack_a, t_list *stack_b);
+void	print_stacks(t_list *stack_a, t_list *stack_b);
 
 #endif

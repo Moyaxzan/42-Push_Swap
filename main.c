@@ -6,12 +6,13 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/07 12:24:06 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:55:12 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
+
+/*#include <stdio.h>
 void	print_stacks(t_list *stack_a, t_list *stack_b)
 {
 	while (stack_a || stack_b)
@@ -45,8 +46,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	if (!is_sorted(stack_a))
-		sort(&stack_a, &stack_b);
+	sort(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:42:13 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/04 19:22:09 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/16 12:23:52 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_targets(t_list *stack_a, t_list *stack_b)
 	current_node = stack_b;
 	while (current_node)
 	{
-		if (*((int *)current_node->content) > max(stack_a))
+		if (*((int *)current_node->content) >= max(stack_a))
 			current_node->target = get_min_node(stack_a);
 		else
 			current_node->target

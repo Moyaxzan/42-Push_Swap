@@ -1,10 +1,10 @@
 NAME = push_swap
 CHECKER = checker
-SRCS = init.c main.c push.c revert.c rrevert.c swap.c cost.c sort.c \
-       utils.c median.c target.c basic_sorts.c new_split.c
+SRCS_PUSH_SWAP = init.c main.c push.c revert.c rrevert.c swap.c cost.c sort.c \
+                 utils.c median.c target.c basic_sorts.c new_split.c
 SRCS_CHECKER = checker_main.c new_split.c init.c push.c revert.c \
-	       rrevert.c swap.c utils.c check.c
-OBJS = $(SRCS:.c=.o)
+               rrevert.c swap.c utils.c check.c
+OBJS_PUSH_SWAP = $(SRCS_PUSH_SWAP:.c=.o)
 OBJS_CHECKER = $(SRCS_CHECKER:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -13,22 +13,19 @@ HEADER = push_swap.h
 HEADER_CHECKER = checker.h
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-Make = make
+MAKE = make
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER) $(LIBFT)
-	$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJS) -L $(LIBFT_DIR) -lft
-
-$(OBJS): %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
-
 bonus: $(CHECKER)
+
+$(NAME): $(OBJS_PUSH_SWAP) $(HEADER) $(LIBFT)
+	$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJS_PUSH_SWAP) -L $(LIBFT_DIR) -lft
 
 $(CHECKER): $(OBJS_CHECKER) $(HEADER_CHECKER) $(LIBFT)
 	$(CC) $(CFLAGS) -g -fsanitize=address -o $(CHECKER) $(OBJS_CHECKER) -L $(LIBFT_DIR) -lft
 
-$(OBJS_CHECKER): %.o: %.c $(HEADER_CHECKER)
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
 
 $(LIBFT):
@@ -36,7 +33,7 @@ $(LIBFT):
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	rm -f $(OBJS) $(OBJS_CHECKER)
+	$(RM) $(OBJS_PUSH_SWAP) $(OBJS_CHECKER)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
@@ -44,4 +41,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all bonus clean fclean re

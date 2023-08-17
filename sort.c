@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/04 18:08:48 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/17 11:54:28 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ void	sort_huge(t_list **stack_a, t_list **stack_b)
 		bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
 		pa(stack_a, stack_b, 1);
 	}
-	if (!*stack_b)
+	if (!*stack_b  && stack_a && (*stack_a)->content)
 	{
 		while (*((int *)(*stack_a)->content) != min(*stack_a))
 		{
+			init_costs(*stack_a);
 			if (min_above_med(*stack_a, min(*stack_a)))
 			{
 				revert(stack_a);
@@ -113,13 +114,14 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	}
 	if (stack_size == 3)
 		return (sort_three(stack_a));
-	if (stack_size <= 5)
-		return (sort_five(stack_a, stack_b));
 	else
 	{
 		push_to_b(stack_a, stack_b);
-		sort_five(stack_a, stack_b);
-		while (*stack_b)
+		stack_size = ft_lstsize(*stack_a);
+		if (stack_size == 3)
+			sort_three(stack_a);
+		while (*stack_b || !is_sorted(*stack_a))
 			sort_huge(stack_a, stack_b);
+		//print_stacks(*stack_a, *stack_b);
 	}
 }
