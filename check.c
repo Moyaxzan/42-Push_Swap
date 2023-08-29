@@ -6,11 +6,13 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 14:43:37 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/07 12:24:57 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:23:32 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+#include "libft/Get-Next-Line/get_next_line.h"
+#include <stdlib.h>
 
 static int	apply_move(char *instruction, t_list **stack_a, t_list **stack_b)
 {
@@ -53,6 +55,7 @@ int	check(t_list **stack_a, t_list **stack_b)
 			ft_lstclear(stack_a, free);
 			ft_lstclear(stack_b, free);
 			free(instruction);
+			get_next_line(-1);
 			write(2, "Error\n", 6);
 			return (-1);
 		}

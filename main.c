@@ -6,10 +6,11 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:29:16 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/17 11:55:12 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:13:33 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
 /*#include <stdio.h>
@@ -40,13 +41,16 @@ int	main(int argc, char **argv)
 
 	stack_a = 0x0;
 	stack_b = 0x0;
+	if (argc == 1)
+		return (0);
 	if (!init(new_split(argc, argv), &stack_a))
 	{
 		ft_lstclear(&stack_a, free_content);
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	sort(&stack_a, &stack_b);
+	if (!is_sorted(stack_a))
+		sort(&stack_a, &stack_b);
 	ft_lstclear(&stack_a, free);
 	return (0);
 }

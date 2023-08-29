@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 18:49:15 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/07 12:34:43 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:22:18 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int	main(int argc, char **argv)
 
 	stack_a = 0x0;
 	stack_b = 0x0;
+	if (argc == 1)
+		return (-1);
 	if (!init(new_split(argc, argv), &stack_a))
 	{
-		ft_lstclear(&stack_a, free_content);
 		write(2, "Error\n", 6);
+		ft_lstclear(&stack_a, free_content);
 		return (-1);
 	}
 	return (check(&stack_a, &stack_b));

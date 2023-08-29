@@ -6,13 +6,13 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:21:29 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/16 12:37:48 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:25:54 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(int *a, int *b)
+static void	ft_swap(int *a, int *b)
 {
 	int	tmp;
 
@@ -21,7 +21,7 @@ void	ft_swap(int *a, int *b)
 	*a = tmp;
 }
 
-void	sort_array(int *array, int size)
+static void	sort_array(int *array, int size)
 {
 	int	min;
 	int	imin;
@@ -88,12 +88,13 @@ static int	full_big(t_list *stack, int median)
 	return (1);
 }
 
-
-void	push_to_b(t_list **stack_a, t_list **stack_b)
+int	push_to_b(t_list **stack_a, t_list **stack_b)
 {
 	int	median;
 
 	median = get_median(*stack_a);
+	if (!median)
+		return (0);
 	while (ft_lstsize(*stack_a) != 3 && !only_target(*stack_a))
 	{
 		while (!full_big(*stack_a, median)
@@ -106,4 +107,5 @@ void	push_to_b(t_list **stack_a, t_list **stack_b)
 		if (!only_target(*stack_a))
 			pb(stack_a, stack_b, 1);
 	}
+	return (1);
 }

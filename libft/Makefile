@@ -13,7 +13,6 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-TEST_FLAGS = -g3 -fsanitize=address
 ARFLAGS = -rcs
 RM = rm -rf
 

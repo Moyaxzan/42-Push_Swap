@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 13:41:19 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/16 12:31:41 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:30:50 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,23 @@ int	only_target(t_list *stack_a)
 	return (1);
 }
 
-static void	sort_three_p2(t_list **stack, int first, int second, int third)
+static int	sort_three_p2(t_list **stack, int first, int second, int third)
 {
 	if (first > third)
 	{
 		rrevert(stack);
-		write(1, "rra\n", 4);
+		return (write(1, "rra\n", 4));
 	}
 	else if (second > third)
 	{
 		swap(stack);
 		revert(stack);
-		write(1, "sa\nra\n", 6);
+		return (write(1, "sa\nra\n", 6));
 	}
+	return (0);
 }
 
-void	sort_three(t_list **stack)
+int	sort_three(t_list **stack)
 {
 	int	first;
 	int	second;
@@ -55,18 +56,18 @@ void	sort_three(t_list **stack)
 	{
 		swap(stack);
 		rrevert(stack);
-		write(1, "sa\nrra\n", 7);
+		return (write(1, "sa\nrra\n", 7));
 	}
 	else if (first > second && first > third)
 	{
 		revert(stack);
-		write(1, "ra\n", 3);
+		return (write(1, "ra\n", 3));
 	}
 	else if (first > second)
 	{
 		swap(stack);
-		write(1, "sa\n", 3);
+		return (write(1, "sa\n", 3));
 	}
 	else
-		sort_three_p2(stack, first, second, third);
+		return (sort_three_p2(stack, first, second, third));
 }

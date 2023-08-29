@@ -20,13 +20,13 @@ all: $(NAME)
 bonus: $(CHECKER)
 
 $(NAME): $(OBJS_PUSH_SWAP) $(HEADER) $(LIBFT)
-	$(CC) $(CFLAGS) -g -fsanitize=address -o $(NAME) $(OBJS_PUSH_SWAP) -L $(LIBFT_DIR) -lft
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS_PUSH_SWAP) -L $(LIBFT_DIR) -lft
 
 $(CHECKER): $(OBJS_CHECKER) $(HEADER_CHECKER) $(LIBFT)
-	$(CC) $(CFLAGS) -g -fsanitize=address -o $(CHECKER) $(OBJS_CHECKER) -L $(LIBFT_DIR) -lft
+	$(CC) $(CFLAGS) -o $(CHECKER) $(OBJS_CHECKER) -L $(LIBFT_DIR) -lft
 
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -g -I. -I $(LIBFT_DIR)/includes -c $< -o $@
+	$(CC) $(CFLAGS) -I. -I $(LIBFT_DIR)/includes -c $< -o $@
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) bonus

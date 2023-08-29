@@ -6,13 +6,13 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:22:54 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/17 11:54:28 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:37:37 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	min_above_med(t_list *stack_a, int min)
+static int	min_above_med(t_list *stack_a, int min)
 {
 	t_list	*current;
 
@@ -49,7 +49,7 @@ static void	small_actions(t_list **stack_a,
 	return ;
 }
 
-void	bring_top(t_list **stack_a,
+static void	bring_top(t_list **stack_a,
 		t_list **stack_b, t_list *node_a, t_list *node_b)
 {
 	while (*stack_a != node_a && *stack_b != node_b)
@@ -72,18 +72,17 @@ void	bring_top(t_list **stack_a,
 	return ;
 }
 
-void	sort_huge(t_list **stack_a, t_list **stack_b)
+static void	sort_huge(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*node_to_move;
 
-	init_targets(*stack_a, *stack_b);
 	node_to_move = get_cheapest_move(*stack_a, *stack_b);
 	if (*stack_b)
 	{
 		bring_top(stack_a, stack_b, node_to_move->target, node_to_move);
 		pa(stack_a, stack_b, 1);
 	}
-	if (!*stack_b  && stack_a && (*stack_a)->content)
+	if (!*stack_b && stack_a && (*stack_a)->content)
 	{
 		while (*((int *)(*stack_a)->content) != min(*stack_a))
 		{
@@ -102,7 +101,7 @@ void	sort_huge(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-void	sort(t_list **stack_a, t_list **stack_b)
+int	sort(t_list **stack_a, t_list **stack_b)
 {
 	int	stack_size;
 
@@ -110,18 +109,22 @@ void	sort(t_list **stack_a, t_list **stack_b)
 	if (stack_size == 2)
 	{
 		swap(stack_a);
-		return ((void) write(1, "sa\n", 3));
+		return (write(1, "sa\n", 3));
 	}
 	if (stack_size == 3)
 		return (sort_three(stack_a));
 	else
 	{
-		push_to_b(stack_a, stack_b);
+		if (!push_to_b(stack_a, stack_b))
+			return (0);
 		stack_size = ft_lstsize(*stack_a);
 		if (stack_size == 3)
 			sort_three(stack_a);
 		while (*stack_b || !is_sorted(*stack_a))
+		{
+			init_targets(*stack_a, *stack_b);
 			sort_huge(stack_a, stack_b);
-		//print_stacks(*stack_a, *stack_b);
+		}
 	}
+	return (1);
 }

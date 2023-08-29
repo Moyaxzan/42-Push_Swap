@@ -6,7 +6,7 @@
 /*   By: tsaint-p <tsaint-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:45:47 by tsaint-p          #+#    #+#             */
-/*   Updated: 2023/08/07 12:27:41 by tsaint-p         ###   ########.fr       */
+/*   Updated: 2023/08/18 11:55:02 by tsaint-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 
 char	**new_split(int argc, char **argv);
-void	sort(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b, int i_write);
 void	pb(t_list **stack_a, t_list **stack_b, int i_write);
 void	revert(t_list **stack);
